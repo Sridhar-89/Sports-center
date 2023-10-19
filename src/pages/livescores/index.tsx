@@ -27,11 +27,11 @@ function LiveScoreboard() {
     <div>
       <div className="font-bold text-xl px-5 py-4">Live Scoreboard</div>
 
-      <div className="flex px-4 py-2 overflow-x-auto shadow">
+      <div className="flex px-4 py-2 overflow-x-auto shadow-lg">
         <div className="flex space-x-10">
           {sports.map((sport, index) => (
             <div
-              className="bg-white rounded-lg shadow p-4 border border-gray-400"
+              className="bg-gray-300 rounded-lg shadow p-4 border border-gray-400"
               key={sport}
             >
               <div className="flex justify-between space-x-3">
