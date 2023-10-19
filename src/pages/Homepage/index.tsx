@@ -4,7 +4,7 @@ import Appbar from "../../layouts/Appbar";
 import Favourites from "../favourites";
 import Articles from "../articles";
 
-function Home() {
+const Home = () =>{
   return (
     <div className="m-4">
       <Appbar/>

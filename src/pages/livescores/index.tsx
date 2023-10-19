@@ -1,7 +1,7 @@
 import React from "react";
 import LiveScoreIcon from "../../assets/react.svg";
 
-function LiveScoreboard() {
+const LiveScoreboard= ()=> {
   const sports = ["Soccer", "Basketball", "Tennis", "Cricket", "Baseball"];
   const teams = [
     ["Team Alpha", "Team Bravo"],
