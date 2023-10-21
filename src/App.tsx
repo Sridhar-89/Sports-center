@@ -2,11 +2,15 @@ import { RouterProvider } from "react-router-dom";
 
 import "./index.css";
 import router from "./routes";
+import { ArticlesProvider } from './context/articles/context.tsx'
 
 const App = () => {
   return (
     <div>
-       <RouterProvider router={router} />
+      <ArticlesProvider>
+      <RouterProvider router={router} />
+      </ArticlesProvider>
+       
     </div>
   );
 };
