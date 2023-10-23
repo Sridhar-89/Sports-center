@@ -4,7 +4,7 @@ import ArticlesList from "./ArticlesList";
 
 const Articles = () => {
   return (
-    <div>
+    <div className='bg-slate-300'>
       <ArticlesList />
     </div>
   );
