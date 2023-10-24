@@ -265,16 +265,16 @@ const Appbar = () => {
                 </Menu>
                 <Menu
                   as="div"
-                  className="relative inline-block text-white text-left"
+                  className="relative inline-block text-white text-left px-2"
                 >
-                  <Menu.Button className="h-8 w-8 rounded-full hover:bg-blue-600 flex items-center justify-center focus:outline-none">
+                  <Menu.Button className="h-10 w-10 rounded-full hover:bg-blue-600 flex items-center justify-center focus:outline-none">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6"
+                      className="w-10 h-6"
                     >
                       <path
                         strokeLinecap="round"
@@ -283,12 +283,12 @@ const Appbar = () => {
                       />
                     </svg>
                   </Menu.Button>
-                  <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="origin-top-right absolute right-0 mt-2 mr-5 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                     {authToken ? (
                       <Menu.Item>
                         <button
                           onClick={signout}
-                          className="block px-4 py-2 text-sm text-gray-700"
+                          className="px-3 py-2 text-sm text-black hover:bg-red-500"
                         >
                           Logout
                         </button>
