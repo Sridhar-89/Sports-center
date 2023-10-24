@@ -56,11 +56,11 @@ const SignInForm: React.FC = () => {
             value={userEmail}
             required
             onChange={(e) => setUserEmail(e.target.value)}
-            className="w-full border rounded-lg py-3 px-5 text-black leading-tight focus:outline-red focus:border-blue-900 focus:shadow-outline-green"
+            className="w-full border rounded-lg py-3 px-5 text-black"
           />
         </div>
         <div>
-          <label className="block text-gray-900 font-bold mt-3">Password:</label>
+          <label className="block text-black font-bold mt-3">Password:</label>
           <input
             type="password"
             name="password"
@@ -68,7 +68,7 @@ const SignInForm: React.FC = () => {
             required
             value={userPassword}
             onChange={(e) => setUserPassword(e.target.value)}
-            className="w-full border rounded-lg py-3 px-5  text-black leading-tight focus:outline-red focus:border-blue-900 focus:shadow-outline-green"
+            className="w-full border rounded-lg py-3 px-5 text-black "
           />
         </div>
         <button
