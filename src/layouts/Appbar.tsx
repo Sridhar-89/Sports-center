@@ -9,6 +9,7 @@ import { useTeamsState } from "../context/teams/context";
 import { Sport } from "../context/sports/reducer";
 import { Team } from "../context/teams/reducer";
 import { API_ENDPOINT } from "../config/constants";
+import logo from "../assets/logo.png";
 
 import { Link } from "react-router-dom";
 
@@ -163,7 +164,7 @@ const Appbar = () => {
               <div className="flex items-center">
                 <img
                   className="h-12 mr-10 rounded"
-                  src="src/assets/logo.png"
+                  src={logo}
                   alt="Logo"
                 />
                 <span className="font-bold text-xl text-white">SPORTS HUB</span>
