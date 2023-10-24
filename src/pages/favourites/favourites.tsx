@@ -17,6 +17,8 @@ const Favourites: React.FC = () => {
     const [selectedSport, setSelectedSport] = useState<string>("");
     const [selectedTeam, setSelectedTeam] = useState<string>("");
 
+    const authToken = localStorage.getItem("authToken");
+
     useEffect(() => {
       fetchSports(sportsDispatch);
       fetchTeams(teamsDispatch);
@@ -31,16 +33,30 @@ const Favourites: React.FC = () => {
     const handleTeamChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedTeam(event.target.value);
     };
+    const favoriteSports = JSON.parse(localStorage.getItem("favouriteSports") || "{}");
+    const favoriteSportsList = sportsState?.sports.filter((sport: any) => favoriteSports[sport.name] === true);
+
+    const favoriteTeams = JSON.parse(localStorage.getItem("favouriteTeams") || "{}");
+    const favoriteTeamsList = teamsState?.teams.filter((team: any) => favoriteTeams[team.name] === true);
     return (
       <div className="container">
         <div className="dropdown-container  p-4">
           <select className="dropdown p-2 border border-black rounded-lg" value={selectedSport} onChange={handleSportChange}>
             <option value="">Select sport</option>
-            {sportsState?.sports.map((sport: any) => (
+            {authToken ? (
+            favoriteSportsList?.map((sport: any) => (
               <option key={sport.id} value={sport.name}>
                 {sport.name}
               </option>
-            ))}
+           ))
+           ):(
+             sportsState?.sports.map((sport: any) => (
+               <option key={sport.id} value={sport.name}>
+                 {sport.name}
+               </option>
+             ))
+           )
+             }
           </select>
         </div>
 
@@ -48,13 +64,21 @@ const Favourites: React.FC = () => {
           <div className="dropdown-container p-4">
             <select className="dropdown p-3 border border-black rounded-lg " value={selectedTeam} onChange={handleTeamChange}>
               <option value="">Select Team</option>
-              {teamsState?.teams
-                .filter((team: any) => team.plays === selectedSport)
+              {authToken ? (
+              favoriteTeamsList?.filter((team: any) => team.plays === selectedSport)
                 .map((team: any) => (
                   <option key={team.id} value={team.name}>
                     {team.name}
                   </option>
-                ))}
+                ))
+                ): (
+                  teamsState?.teams.filter((team: any) => team.plays === selectedSport)
+                    .map((team: any) => (
+                      <option key={team.id} value={team.name}>
+                        {team.name}
+                      </option>
+                    ))
+                ) }
             </select>
           </div>
         )}

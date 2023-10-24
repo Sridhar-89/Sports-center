@@ -29,11 +29,11 @@ const SignupForm: React.FC = () => {
       console.log("Registration successful");
 
       const data = await response.json() as ApiResponse;
-      localStorage.setItem("authToken", data.token);
+      localStorage.setItem("authToken", data.auth_token);
       localStorage.setItem("userData", JSON.stringify(data.user));
       console.log(data)
 
-      navigate("/dashboard");
+      navigate("/home");
     } catch (error) {
       console.error("Registration failed:", error);
     }

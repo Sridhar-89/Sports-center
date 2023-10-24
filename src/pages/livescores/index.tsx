@@ -6,7 +6,7 @@ const LiveScoreboard = () => {
  
 
   return (
-    <div>
+    <div className="bg-green-100">
       <div className='font-bold text-xl px-5 py-2'>Live Games</div>
         <div className="flex px-4 py-2  shadow-lg">
           <div className="flex space-x-10">

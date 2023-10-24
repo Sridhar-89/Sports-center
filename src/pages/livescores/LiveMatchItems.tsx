@@ -44,9 +44,9 @@ export default function LiveMatchItems(props : Props, State : State) {
       }
 
       const data = await Response.json();
-      //console.log("data",data)
+   
       setLiveMatch(data)
-      //console.log(Livematch);
+   
     } catch (error) {
       console.error('data fetching failed:', error);
     }

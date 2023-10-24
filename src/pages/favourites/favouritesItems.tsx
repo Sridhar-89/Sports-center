@@ -88,10 +88,10 @@ const Favouriteitems = ({
           <div key={item.id} className="my-5 p-5 bg-black rounded-md flex">
             <div className="flex-1 bg-black-300 flex flex-col justify-center">
               <div>
-                <h3 className="text-l text-white font-bold mb-3">
+                <h3 className="text-lg text-white font-bold mb-3">
                   {item.title}
                 </h3>
-                <p className="text-black-400 mb-3">{item.details}</p>
+                <p className="text-white text-sm mb-2">{item.summary}</p>
 
                 <div className="flex justify-center">
                   <button
@@ -115,22 +115,24 @@ const Favouriteitems = ({
                     <button onClick={() => setIsDialogOpen(false)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
+                        width="30"
+                        height="30"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        className="w-6 h-6"
+                        fill="none"
+                        stroke="red"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-5 h-5"
                       >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="15" y1="9" x2="9" y2="15" />
+                        <line x1="9" y1="9" x2="15" y2="15" />
                       </svg>
                     </button>
                   </div>
                   {articleData && (
-                    <div className="bg-black">
+                    <div className="bg-black px-2 py-2">
                       <Dialog.Title
                         key={selectedArticleId}
                         className="bg-green-200 shadow-lg font-bold text-xl py-3 px-3 md-3"

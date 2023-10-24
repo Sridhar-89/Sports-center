@@ -12,6 +12,10 @@ const ArticlesList: React.FC = () => {
     fetchArticles(dispatchArticles);
   }, [dispatchArticles]);
   const state: any = useArticlesState();
+  const favoriteSports = JSON.parse(localStorage.getItem("favouriteSports") || "{}");
+
+  const favoriteTeams = JSON.parse(localStorage.getItem("favouriteTeams") || "{}");
+  const authToken = localStorage.getItem("authToken");
 
   const [selectedSport, setSelectedSport] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("date");
@@ -26,7 +30,7 @@ const ArticlesList: React.FC = () => {
   }
 
   const applyFilter = (article: any) => {
-    if (!selectedSport || article.sport.name === selectedSport) {
+    if ( article.sport.name === selectedSport) {
       switch (selectedFilter) {
         case "By SportName":
           return article.sport.name.includes(filterValue);
@@ -38,6 +42,17 @@ const ArticlesList: React.FC = () => {
           return true;
       }
     }
+    else if(selectedSport==""){
+      // return favoriteSports[article.sport.name] === true && article.teams.every((team: any) => favoriteSports[team.name] === true);
+      if(authToken){
+        return favoriteSports[article.sport.name] === true && 
+      ( article.teams.length === 0  || article.teams.some((team: any) => favoriteTeams[team.name] === true));
+        }
+        else{
+          return true
+        }
+
+   }
     return false;
   };
 
@@ -66,7 +81,7 @@ const ArticlesList: React.FC = () => {
                   : "bg-gray-200 text-gray-600"
               }`}
             >
-              News
+              Your News
             </button>
             {Array.from(
               new Set(articles.map((article: any) => article.sport.name))
