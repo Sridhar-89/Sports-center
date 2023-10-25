@@ -47,7 +47,7 @@ export default function LiveMatches() {
 
   return (
     <>
-      <div className="flex px-5 ">
+      <div className="flex px-6">
         {authToken
           ? live?.map((match: any) => (
               <LiveMatchItems key={match.id} id={match.id} />

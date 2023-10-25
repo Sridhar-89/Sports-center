@@ -126,7 +126,7 @@ export default function ArticleListItems({ article }: { article: Article }) {
                   <img
                     src={articleData.thumbnail}
                     alt={articleData.title}
-                    className="w-full h-40vh object-cover rounded"
+                    className="w-full h-40 object-cover rounded"
                   />
                 </div>
                 <div>{articleData.content}</div>

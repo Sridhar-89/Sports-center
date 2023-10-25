@@ -38,14 +38,14 @@ export default function LiveMatchItems(props: Props, State: State) {
       });
 
       if (!Response.ok) {
-        throw new Error("Failed to fetch match details");
+        throw new Error("Failed to fetch match details or unable to fetch");
       }
 
       const data = await Response.json();
 
       setLiveMatch(data);
     } catch (error) {
-      console.error("data fetching failed:", error);
+      console.log("data fetching failed or unable to fetch", error);
     }
   };
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function LiveMatchItems(props: Props, State: State) {
             <div className="flex justify-between space-x-3">
               <p className="text-lg font-semibold">{Livematch.sportName}</p>
               <button
-                className=" hover:bg-blue-600 text-white py-1 px-1  rounded-md"
+                className=" hover:bg-red-600 text-white py-1 px-1  rounded-md"
                 onClick={() => {
                   fetchMatchDetails(Livematch.id);
                 }}
@@ -81,7 +81,7 @@ export default function LiveMatchItems(props: Props, State: State) {
             <div>
               <p className="text-sm">{Livematch.location}</p>
             </div>
-            <div className="mt-2">
+            <div className="mt-1">
               <div className="flex justify-between">
                 <span className="mr-2">{Livematch.teams[0].name}</span>
                 <span>{Livematch.score[Livematch.teams[0].name]}</span>
