@@ -19,7 +19,6 @@ const SignInForm: React.FC = () => {
 
   const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
 
     try {
       const response = await fetch(`${API_ENDPOINT}/users/sign_in`, {
@@ -31,14 +30,12 @@ const SignInForm: React.FC = () => {
       if (!response.ok) {
         throw new Error("Authentication failed or invalid details");
       }
-      
 
-      const userData = await response.json() as ApiResponse;
-     
+      const userData = (await response.json()) as ApiResponse;
+
       localStorage.setItem("authToken", userData.auth_token);
       localStorage.setItem("userDetails", JSON.stringify(userData.user));
       navigate("/home");
-     
     } catch (error) {
       console.error("Authentication failed: or invalid details", error);
     }
@@ -83,7 +80,7 @@ const SignInForm: React.FC = () => {
           id="signup-btn"
           className="rounded-lg bg-red-500 px-2 py-2 m-4 text-sm font-medium text-white hover:bg-yellow-500"
         >
-          Don't Have an account ? Create 
+          Don't Have an account ? Create
         </button>
       </Link>
     </div>

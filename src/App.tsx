@@ -5,7 +5,7 @@ import { SportsProvider } from "./context/sports/context.tsx";
 
 import "./index.css";
 import router from "./routes";
-import { ArticlesProvider } from './context/articles/context.tsx'
+import { ArticlesProvider } from "./context/articles/context.tsx";
 
 const App = () => {
   return (
@@ -19,7 +19,6 @@ const App = () => {
           </MatchesProvider>
         </TeamsProvider>
       </SportsProvider>
-       
     </div>
   );
 };

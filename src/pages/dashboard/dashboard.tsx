@@ -2,9 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 interface UserProfile {
-    id: number;
-    name: string;
-    email: string;
+  id: number;
+  name: string;
+  email: string;
 }
 
 const Dashboardpage: React.FC = () => {
@@ -16,7 +16,6 @@ const Dashboardpage: React.FC = () => {
     userProfile = JSON.parse(storedUserData) as UserProfile;
   }
 
-  // Logout function
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userDetails");

@@ -12,9 +12,13 @@ const ArticlesList: React.FC = () => {
     fetchArticles(dispatchArticles);
   }, [dispatchArticles]);
   const state: any = useArticlesState();
-  const favoriteSports = JSON.parse(localStorage.getItem("favouriteSports") || "{}");
+  const favoriteSports = JSON.parse(
+    localStorage.getItem("favouriteSports") || "{}"
+  );
 
-  const favoriteTeams = JSON.parse(localStorage.getItem("favouriteTeams") || "{}");
+  const favoriteTeams = JSON.parse(
+    localStorage.getItem("favouriteTeams") || "{}"
+  );
   const authToken = localStorage.getItem("authToken");
 
   const [selectedSport, setSelectedSport] = useState("");
@@ -22,7 +26,7 @@ const ArticlesList: React.FC = () => {
   const [filterValue, setFilterValue] = useState("");
 
   const { articles, isLoading, isError, errorMessage } = state;
-  if ( isLoading) {
+  if (isLoading) {
     return <span>Loading...</span>;
   }
   if (isError) {
@@ -30,7 +34,7 @@ const ArticlesList: React.FC = () => {
   }
 
   const applyFilter = (article: any) => {
-    if ( article.sport.name === selectedSport) {
+    if (article.sport.name === selectedSport) {
       switch (selectedFilter) {
         case "By SportName":
           return article.sport.name.includes(filterValue);
@@ -41,18 +45,19 @@ const ArticlesList: React.FC = () => {
         default:
           return true;
       }
+    } else if (selectedSport == "") {
+      if (authToken) {
+        return (
+          favoriteSports[article.sport.name] === true &&
+          (article.teams.length === 0 ||
+            article.teams.some(
+              (team: any) => favoriteTeams[team.name] === true
+            ))
+        );
+      } else {
+        return true;
+      }
     }
-    else if(selectedSport==""){
-      
-      if(authToken){
-        return favoriteSports[article.sport.name] === true && 
-      ( article.teams.length === 0  || article.teams.some((team: any) => favoriteTeams[team.name] === true));
-        }
-        else{
-          return true
-        }
-
-   }
     return false;
   };
 
@@ -123,9 +128,9 @@ const ArticlesList: React.FC = () => {
                 <path
                   d="M4 6H20M4 12H16M4 18H12"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>

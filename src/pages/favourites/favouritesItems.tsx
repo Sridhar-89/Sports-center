@@ -26,8 +26,6 @@ const Favouriteitems = ({
   useEffect(() => {
     fetchArticles(dispatchArticles);
   }, [dispatchArticles]);
-  console.log(selectedSport);
-  console.log(selectedTeam);
 
   const state: any = useArticlesState();
 
@@ -61,7 +59,7 @@ const Favouriteitems = ({
         throw new Error("Failed to fetch article data");
       }
       const data: ArticleContent = await response.json();
-      console.log("data", data);
+     
       setArticleData(data);
     } catch (error) {
       console.error("Error while fetching the article data:", error);

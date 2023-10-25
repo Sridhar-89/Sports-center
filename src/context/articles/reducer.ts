@@ -34,7 +34,7 @@ export type ArticlesActions =
 
 export const reducer = (
   state: ArticlesState = initialState,
-  action: ArticlesActions,
+  action: ArticlesActions
 ): ArticlesState => {
   switch (action.type) {
     case "FETCH_ARTICLES_REQUEST":

@@ -26,12 +26,12 @@ const SignupForm: React.FC = () => {
       if (!response.ok) {
         throw new Error("Registration failed");
       }
-      console.log("Registration successful");
+      
 
-      const data = await response.json() as ApiResponse;
+      const data = (await response.json()) as ApiResponse;
       localStorage.setItem("authToken", data.auth_token);
       localStorage.setItem("userData", JSON.stringify(data.user));
-      console.log(data)
+      console.log(data);
 
       navigate("/home");
     } catch (error) {
@@ -43,7 +43,9 @@ const SignupForm: React.FC = () => {
     <form onSubmit={(event) => handleSubmit(event)}>
       <div className="items-center justify-center">
         <div>
-          <label className="block text-gray-900 font-semibold mb-3">Your Name:</label>
+          <label className="block text-gray-900 font-semibold mb-3">
+            Your Name:
+          </label>
           <input
             type="text"
             name="newUserName"
@@ -54,7 +56,9 @@ const SignupForm: React.FC = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-900 font-semibold mb-3">Email:</label>
+          <label className="block text-gray-900 font-semibold mb-3">
+            Email:
+          </label>
           <input
             type="email"
             name="newUserEmail"
@@ -66,7 +70,9 @@ const SignupForm: React.FC = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-900 font-semibold mb-3">Password:</label>
+          <label className="block text-gray-900 font-semibold mb-3">
+            Password:
+          </label>
           <input
             type="password"
             name="newUserPassword"

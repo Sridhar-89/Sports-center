@@ -25,15 +25,6 @@ export default function ArticleListItems({ article }: { article: Article }) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [articleData, setArticleData] = useState<Article | null>(null);
 
-  // const { articles, isLoading, isError, errorMessage } = state;
-
-  // if (articles.length === 0 && isLoading) {
-  //   return <span>Loading...</span>;
-  // }
-  // if (isError) {
-  //   return <span>{errorMessage}</span>;
-  // }
-
   const handleLinkClick = async (articleId: number) => {
     setSelectedArticleId(articleId);
     setIsDialogOpen(true);
