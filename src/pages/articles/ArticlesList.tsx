@@ -43,7 +43,7 @@ const ArticlesList: React.FC = () => {
       }
     }
     else if(selectedSport==""){
-      // return favoriteSports[article.sport.name] === true && article.teams.every((team: any) => favoriteSports[team.name] === true);
+      
       if(authToken){
         return favoriteSports[article.sport.name] === true && 
       ( article.teams.length === 0  || article.teams.some((team: any) => favoriteTeams[team.name] === true));
@@ -106,11 +106,11 @@ const ArticlesList: React.FC = () => {
             <select
               value={selectedFilter}
               onChange={(e) => setSelectedFilter(e.target.value)}
-              className="px-3 py-3 text-sm rounded font-bold bg-gray-200 text-black-400"
+              className="px-3 py-3 text-sm rounded-lg font-bold bg-gray-200 text-black-400"
             >
-              <option value="By SportName">Date</option>
-              <option value="By Date">Sport Name</option>
-              <option value="By Title">Title</option>
+              <option value="By SportName">By Date</option>
+              <option value="By Date">By Sport Name</option>
+              <option value="By Title">By Title</option>
             </select>
             <div className="p-1 bg-slate-400 m-2">
               <svg

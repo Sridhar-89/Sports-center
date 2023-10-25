@@ -20,7 +20,7 @@ const Appbar = () => {
   const navigate = useNavigate();
 
   const authToken = localStorage.getItem("authToken");
-  const userData = localStorage.getItem("userData");
+  // const userData = localStorage.getItem("userData");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [favouriteSports, setFavouriteSports] = useState<{
     [sportName: string]: boolean;
@@ -29,19 +29,17 @@ const Appbar = () => {
     [teamName: string]: boolean;
   }>({});
 
-  const [tempFavouriteSports, setTempFavouriteSports] = useState<{
+  const [tmFavouriteSports, setTmFavouriteSports] = useState<{
     [sportName: string]: boolean;
   }>({});
-  const [tempFavouriteTeams, setTempFavouriteTeams] = useState<{
+  const [tmFavouriteTeams, setTmFavouriteTeams] = useState<{
     [teamName: string]: boolean;
   }>({});
 
-  console.log("favsports", favouriteSports);
-  console.log("favteams", favouriteTeams);
 
   const handleSportCheckbox = (event: any) => {
     const { id, checked } = event.target;
-    setTempFavouriteSports((previousSports) => ({
+    setTmFavouriteSports((previousSports) => ({
       ...previousSports,
       [id]: checked,
     }));
@@ -49,7 +47,7 @@ const Appbar = () => {
 
   const handleTeamCheckbox = (event: any) => {
     const { id, checked } = event.target;
-    setTempFavouriteTeams((previousTeams) => ({
+    setTmFavouriteTeams((previousTeams) => ({
       ...previousTeams,
       [id]: checked,
     }));
@@ -70,12 +68,11 @@ const Appbar = () => {
         });
         if (response.ok) {
           const data = await response.json();
-          //console.log("pref",data)
-          console.log("pref", data.preferences);
+        
+          
 
           if (data.preferences.sports && data.preferences.teams) {
-            // setSportsData(data.preferences.sports);
-            // setTeamsData(data.preferences.teams);
+            
             setFavouriteSports(data.preferences.sports);
             setFavouriteTeams(data.preferences.teams);
             localStorage.setItem(
@@ -91,10 +88,10 @@ const Appbar = () => {
             setFavouriteTeams({});
           }
         } else {
-          throw new Error("Failed to fetch data");
+          throw new Error("Failed to fetch data or unable to fetch");
         }
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Error is ", error);
       }
     }
     if (authToken) {
@@ -103,18 +100,6 @@ const Appbar = () => {
   }, []);
   const sports1 = sports?.sports;
   const teams1 = teams?.teams;
-
-  const handleLinkClick = async () => {
-    setTempFavouriteSports(favouriteSports);
-    setTempFavouriteTeams(favouriteTeams);
-    setIsDialogOpen(true);
-  };
-  const handleCancel = () => {
-    setTempFavouriteSports(favouriteSports);
-    setTempFavouriteTeams(favouriteTeams);
-    setIsDialogOpen(false);
-  };
-
   const signout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("userData");
@@ -122,18 +107,30 @@ const Appbar = () => {
     localStorage.removeItem("favouriteTeams");
     navigate("/home");
   };
+
+
+ 
+
+  const handleLinkClick = async () => {
+    setTmFavouriteSports(favouriteSports);
+    setTmFavouriteTeams(favouriteTeams);
+    setIsDialogOpen(true);
+  };
+  
+
+  
   const handleSave = async () => {
-    setFavouriteSports(tempFavouriteSports);
-    setFavouriteTeams(tempFavouriteTeams);
+    setFavouriteSports(tmFavouriteSports);
+    setFavouriteTeams(tmFavouriteTeams);
     localStorage.setItem(
       "favouriteSports",
-      JSON.stringify(tempFavouriteSports)
+      JSON.stringify(tmFavouriteSports)
     );
-    localStorage.setItem("favouriteTeams", JSON.stringify(tempFavouriteTeams));
+    localStorage.setItem("favouriteTeams", JSON.stringify(tmFavouriteTeams));
     try {
       const preferences = {
-        sports: tempFavouriteSports,
-        teams: tempFavouriteTeams,
+        sports: tmFavouriteSports,
+        teams: tmFavouriteTeams,
       };
 
       const response = await fetch(`${API_ENDPOINT}/user/preferences`, {
@@ -146,16 +143,21 @@ const Appbar = () => {
       });
 
       if (!response.ok) {
-        // console.log("error")
-        throw new Error("Failed to save data");
+      
+        throw new Error("Unable to save data or Failed to save data");
       }
 
-      console.log("Data saved successfully");
+      
 
       setIsDialogOpen(false);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error is :", error);
     }
+  };
+  const handleCancel = () => {
+    setTmFavouriteSports(favouriteSports);
+    setTmFavouriteTeams(favouriteTeams);
+    setIsDialogOpen(false);
   };
 
   return (
@@ -163,11 +165,11 @@ const Appbar = () => {
     <Disclosure as="nav" className="bg-black shadow-2xl">
       {() => (
         <>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-9">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <img
-                  className="h-12 mr-10 rounded"
+                  className="h-12 mr-10 rounded-2xl"
                   src={logo}
                   alt="Logo"
                 />
@@ -178,7 +180,7 @@ const Appbar = () => {
                   {authToken ? (
                     <Menu.Button
                       onClick={() => handleLinkClick()}
-                      className="h-8 w-8 rounded-full bg-white hover:bg-blue-600 flex items-center justify-center focus:outline-none"
+                      className="h-8 w-8 rounded-full bg-white hover:bg-blue-600 flex items-center justify-center "
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -223,22 +225,22 @@ const Appbar = () => {
 
                         <div>
                           <Dialog.Title className="bg-white  font-bold text-2xl py-2">
-                            Preferences
+                            Preferences 
                           </Dialog.Title>
                         </div>
                         <div className="p-2 flex flex-wrap">
                           <h1 className="font-bold text-xl">
-                            Favourite Sports
+                            Favourite Sport
                           </h1>
-                          <div className="py-2 flex flex-wrap">
+                          <div className="py-3 flex flex-wrap">
                             {sports1?.map((sport: Sport) => (
-                              <div key={sport.id} className="w-1/3 mb-4 px-2">
+                              <div key={sport.id} className="w-1/2 mb-2 px-3">
                                 <input
                                   type="checkbox"
                                   id={sport.name}
                                   value={sport.name}
                                   checked={
-                                    tempFavouriteSports[sport.name] || false
+                                    tmFavouriteSports[sport.name] || false
                                   }
                                   onChange={handleSportCheckbox}
                                 />
@@ -248,20 +250,20 @@ const Appbar = () => {
                               </div>
                             ))}
                           </div>
-                          <h1 className="font-bold text-xl">Favourite Teams</h1>
+                          <h1 className="font-bold text-xl">Favourite Team</h1>
                           <div className="py-2 flex flex-wrap">
                             {teams1?.map((team: Team) => (
-                              <div key={team.id} className="w-1/3 mb-4 px-2">
+                              <div key={team.id} className="w-1/3 mb-3 px-3">
                                 <input
                                   type="checkbox"
                                   id={team.name}
                                   value={team.name}
                                   checked={
-                                    tempFavouriteTeams[team.name] || false
+                                    tmFavouriteTeams[team.name] || false
                                   }
                                   onChange={handleTeamCheckbox}
                                 />
-                                <label htmlFor={team.name} className="ml-2">
+                                <label htmlFor={team.name} className="ml-1">
                                   {team.name}
                                 </label>
                               </div>
@@ -269,14 +271,14 @@ const Appbar = () => {
                           </div>
 
                           <button
-                            className="bg-gray-800 px-2 py-2 text-white hover:bg-blue-700 text-xl"
+                            className="bg-red-800 px-3 py-1.5 text-white hover:bg-blue-700 text-lg rounded-xl"
                             onClick={() => handleCancel()}
                           >
                             cancel
                           </button>
                           <button
                             onClick={() => handleSave()}
-                            className="bg-gray-800 px-2 py-2 mx-2 text-white  hover:bg-blue-700 text-xl"
+                            className="bg-green-800 px-2 py-1.5 mx-2 text-white  hover:bg-blue-700 text-lg rounded-xl"
                           >
                             save
                           </button>
@@ -289,7 +291,7 @@ const Appbar = () => {
                   as="div"
                   className="relative inline-block text-white text-left px-2"
                 >
-                  <Menu.Button className="h-10 w-10 rounded-full hover:bg-blue-600 flex items-center justify-center focus:outline-none">
+                  <Menu.Button className="h-10 w-10 rounded-full hover:bg-blue-600 flex items-center justify-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -305,7 +307,7 @@ const Appbar = () => {
                       />
                     </svg>
                   </Menu.Button>
-                  <Menu.Items className="origin-top-right absolute right-0 mt-2 mr-5 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="absolute right-0  w-48 rounded-md shadow-lg bg-white ">
                     {authToken ? (
                       <Menu.Item>
                         <button
@@ -325,7 +327,7 @@ const Appbar = () => {
                                 active ? "bg-gray-100" : ""
                               } block px-4 py-2 text-sm text-gray-700`}
                             >
-                              Sign In
+                              SignIn
                             </Link>
                           )}
                         </Menu.Item>
@@ -337,7 +339,7 @@ const Appbar = () => {
                                 active ? "bg-gray-100" : ""
                               } block px-4 py-2 text-sm text-gray-700`}
                             >
-                              Sign Up
+                              SignUp
                             </Link>
                           )}
                         </Menu.Item>
@@ -355,7 +357,7 @@ const Appbar = () => {
           <div>
               <Livescore/>
           </div>
-          <h1 className="font-bold text-xl p-4">Trending News</h1>
+          <h1 className="font-bold text-xl p-5">Trending News</h1>
           <div className="flex flex-col lg:flex-row">
             <div className="lg:w-3/4 shadow-lg">
               <Articles />

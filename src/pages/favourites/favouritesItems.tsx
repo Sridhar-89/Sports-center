@@ -91,12 +91,12 @@ const Favouriteitems = ({
                 <h3 className="text-lg text-white font-bold mb-3">
                   {item.title}
                 </h3>
-                <p className="text-white text-sm mb-2">{item.summary}</p>
+                <p className="text-white text-sm mb-3">{item.summary}</p>
 
                 <div className="flex justify-center">
                   <button
                     onClick={() => handleLinkClick(item.id)}
-                    className=" text-blue-600 underline"
+                    className=" text-blue-600 underline hover:text-red-400"
                   >
                     Read More...
                   </button>

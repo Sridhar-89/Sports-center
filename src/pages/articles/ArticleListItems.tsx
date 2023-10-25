@@ -101,7 +101,7 @@ export default function ArticleListItems({ article }: { article: Article }) {
         onClose={() => setIsDialogOpen(false)}
         className="relative z-50"
       >
-        <div className="fixed inset-0 flex items-center justify-center p-5">
+        <div className="fixed inset-0 flex items-center justify-center p-4">
           <Dialog.Panel className="w-full max-h-screen overflow-y-auto p-4 max-w-2xl rounded bg-gray-200">
             <div className="flex justify-end">
               <button onClick={() => setIsDialogOpen(false)}>
