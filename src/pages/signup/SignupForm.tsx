@@ -7,6 +7,7 @@ const SignupForm: React.FC = () => {
   const [newUserName, setNewUserName] = useState("");
   const [newUserEmail, setNewUserEmail] = useState("");
   const [newUserPassword, setNewUserPassword] = useState("");
+  const[error, setError]= useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -34,13 +35,19 @@ const SignupForm: React.FC = () => {
       console.log(data);
 
       navigate("/home");
-    } catch (error) {
+    } catch (error:any) {
+      setError(error.message);
       console.error("Registration failed:", error);
     }
   };
 
   return (
     <form onSubmit={(event) => handleSubmit(event)}>
+      {error && (
+          <div className="bg-red-600 text-white p-5 rounded-lg mb-2">
+            {error}
+          </div>
+        )}
       <div className="items-center justify-center">
         <div>
           <label className="block text-gray-900 font-semibold mb-3">

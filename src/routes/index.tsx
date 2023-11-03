@@ -24,13 +24,9 @@ const router = createBrowserRouter([
   },
   {
     path:"/password",
-    element:<UPassword/>
-  },
-  {
-    path: "dashboard",
     element: (
       <ProtectedRoute>
-        <Dashboard />
+        <UPassword />
       </ProtectedRoute>
     ),
   },

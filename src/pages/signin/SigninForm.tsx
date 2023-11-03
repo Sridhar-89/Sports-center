@@ -15,6 +15,8 @@ export interface ApiResponse {
 const SignInForm: React.FC = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+
+  const[error, setError]= useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -36,7 +38,8 @@ const SignInForm: React.FC = () => {
       localStorage.setItem("authToken", userData.auth_token);
       localStorage.setItem("userDetails", JSON.stringify(userData.user));
       navigate("/home");
-    } catch (error) {
+    } catch (error:any) {
+      setError(error.message);
       console.error("Authentication failed: or invalid details", error);
     }
   };
@@ -44,6 +47,11 @@ const SignInForm: React.FC = () => {
   return (
     <div>
       <form onSubmit={(event) => handleSignIn(event)}>
+      {error && (
+          <div className="bg-red-600 text-white p-5 rounded-lg mb-2">
+            {error}
+          </div>
+        )}
         <div>
           <label className="block text-black font-bold mt-3">Email:</label>
           <input

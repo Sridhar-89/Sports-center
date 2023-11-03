@@ -11,9 +11,9 @@ export interface ApiResponse {
   };
 }
 
-const ChangePassword: React.FC = () => {
-  const [curr_password, setCurrentPassword] = useState("");
-  const [n_password, setNewPassword] = useState("");
+const ChangePasswordForm: React.FC = () => {
+  const [current_password, setCurrentPassword] = useState("");
+  const [new_password, setNewPassword] = useState("");
   const navigate = useNavigate();
   const authToken = localStorage.getItem("authToken");
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -27,7 +27,7 @@ const ChangePassword: React.FC = () => {
           "Content-Type": "application/json",
         },
 
-        body: JSON.stringify({ curr_password, n_password }),
+        body: JSON.stringify({ current_password, new_password }),
       });
 
       if (!response.ok) {
@@ -38,7 +38,7 @@ const ChangePassword: React.FC = () => {
 
       navigate("/home");
     } catch (error) {
-      console.error("failed to update password", error);
+      console.log("failed to update password", error);
     }
   };
 
@@ -53,7 +53,7 @@ const ChangePassword: React.FC = () => {
             type="password"
             name="currentpassword"
             id="currentpassword"
-            value={curr_password}
+            value={current_password}
             required
             onChange={(e) => setCurrentPassword(e.target.value)}
             className="w-full border rounded-lg py-3 px-4 text-gray-900"
@@ -68,7 +68,7 @@ const ChangePassword: React.FC = () => {
             name="newpassword"
             id="newpassword"
             required
-            value={n_password}
+            value={new_password}
             onChange={(e) => setNewPassword(e.target.value)}
             className="w-full border rounded-lg py-2 px-3 text-gray-900"
           />
@@ -84,4 +84,4 @@ const ChangePassword: React.FC = () => {
   );
 };
 
-export default ChangePassword;
+export default ChangePasswordForm;
