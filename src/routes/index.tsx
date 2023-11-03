@@ -5,6 +5,7 @@ import Signup from "../pages/signup";
 import Home from "../pages/Homepage";
 import ProtectedRoute from "./ProtectedRoute";
 import Dashboard from "../pages/dashboard";
+import UPassword from "../pages/password";
 
 const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/home" replace /> },
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
+  },
+  {
+    path:"/password",
+    element:<UPassword/>
   },
   {
     path: "dashboard",

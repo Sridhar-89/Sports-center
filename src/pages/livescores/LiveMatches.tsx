@@ -42,7 +42,7 @@ export default function LiveMatches() {
   });
 
   if (authToken && live.length == 0) {
-    return <h1>No Live Matches</h1>;
+    return <h1>No Live Matches Available</h1>;
   }
 
   return (

@@ -298,14 +298,29 @@ const Appbar = () => {
                     </Menu.Button>
                     <Menu.Items className="absolute right-0  w-48 rounded-md shadow-lg bg-white ">
                       {authToken ? (
-                        <Menu.Item>
-                          <button
-                            onClick={signout}
-                            className="px-3 py-2 text-sm text-black hover:bg-red-500"
-                          >
-                            Logout
-                          </button>
-                        </Menu.Item>
+                        <div>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                className={`${
+                                  active ? "bg-gray-100" : ""
+                                } block w-full px-3 py-3 text-sm text-black hover:bg-red-500 `}
+                              >
+                                <Link to="/password">
+                                  Change Password
+                                </Link>
+                              </button>
+                            )}
+                          </Menu.Item>
+                          <Menu.Item>
+                            <button
+                              onClick={signout}
+                              className=" block w-full px-3 py-3 text-sm text-black hover:bg-red-500"
+                            >
+                              Sign Out
+                            </button>
+                          </Menu.Item>
+                        </div>
                       ) : (
                         <>
                           <Menu.Item>
