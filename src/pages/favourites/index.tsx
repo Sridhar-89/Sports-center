@@ -1,27 +1,20 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import Favourites from "./favourites";
+import React, { Suspense } from "react";
+const Favourites = React.lazy(() => import("./favourites"));
+import ErrorBoundary from "../../components/ErrorBoundary";
 
 const Favouriteslist = () => {
-  // const items = [
-  //   {
-  //     id: 1,
-  //     title: "Favorite Item A",
-  //     details:
-  //       "Explore this amazing content that will keep you engaged and informed.",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Favorite Item B",
-  //     details:
-  //       "Discover a fascinating article that's both educational and entertaining.",
-  //   },
-  // ];
   return (
-    <div className="m-4 bg-gray-300">
+    <div className="m-4 dark:bg-gray-800">
       <h1 className="py-3 px-4 font-semibold">Your Favorites</h1>
       <div className="m-3">
-        <Favourites />
+        <ErrorBoundary>
+          <Suspense
+            fallback={<div className="suspense-loading">Loading...</div>}
+          >
+            <Favourites />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </div>
   );

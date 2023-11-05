@@ -80,16 +80,16 @@ const Favouriteitems = ({
     return true;
   });
   return (
-    <div className="m-5 bg-gray-300">
+    <div className="m-5 dark:bg-gray-800">
       <div className="m-4">
         {filteredArticles.map((item: any) => (
-          <div key={item.id} className="my-5 p-5 bg-black rounded-md flex">
-            <div className="flex-1 bg-black-300 flex flex-col justify-center">
+          <div key={item.id} className="my-5 p-5 rounded-md flex">
+            <div className="flex-1  flex flex-col dark:bg-gray-800 justify-center">
               <div>
-                <h3 className="text-lg text-white font-bold mb-3">
+                <h3 className="text-lg  font-bold mb-3">
                   {item.title}
                 </h3>
-                <p className="text-white text-sm mb-3">{item.summary}</p>
+                <p className=" text-sm mb-3">{item.summary}</p>
 
                 <div className="flex justify-center">
                   <button
@@ -108,7 +108,7 @@ const Favouriteitems = ({
               className="relative z-50"
             >
               <div className="fixed inset-0 flex items-center justify-center p-5">
-                <Dialog.Panel className="w-full max-h-screen overflow-y-auto p-4 max-w-xl rounded bg-black">
+                <Dialog.Panel className="w-full max-h-screen overflow-y-auto p-4 max-w-xl rounded bg-black dark:bg-gray-800">
                   <div className="flex justify-end">
                     <button onClick={() => setIsDialogOpen(false)}>
                       <svg
@@ -133,7 +133,7 @@ const Favouriteitems = ({
                     <div className="bg-black px-2 py-2">
                       <Dialog.Title
                         key={selectedArticleId}
-                        className="bg-green-200 shadow-lg font-bold text-xl py-3 px-3 md-3"
+                        className="bg-green-200 shadow-lg font-bold text-xl py-3 px-3 md-3 dark:bg-gray-800"
                       >
                         {articleData.title}
                       </Dialog.Title>

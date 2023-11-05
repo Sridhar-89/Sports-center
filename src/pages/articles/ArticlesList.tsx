@@ -75,7 +75,7 @@ const ArticlesList: React.FC = () => {
   };
   return (
     <div>
-      <div className="flex border bg-grey-700">
+      <div className="flex border dark:bg-gray-800">
         <div className="w-full p-3">
           <div className="px-4 mb-3 flex">
             <button
@@ -111,7 +111,7 @@ const ArticlesList: React.FC = () => {
             <select
               value={selectedFilter}
               onChange={(e) => setSelectedFilter(e.target.value)}
-              className="px-3 py-3 text-sm rounded-lg font-bold bg-gray-200 text-black-400"
+              className="px-3 py-3 text-sm rounded-lg font-bold bg-gray-400 text-black-400"
             >
               <option value="By SportName">By Date</option>
               <option value="By Date">By Sport Name</option>
@@ -138,7 +138,7 @@ const ArticlesList: React.FC = () => {
         </div>
       </div>
 
-      <div className="m-3 bg-slate-300">
+      <div className="m-3 dark:bg-gray-500 ">
         {articles
           .filter(applyFilter)
           .sort(sortArticles)

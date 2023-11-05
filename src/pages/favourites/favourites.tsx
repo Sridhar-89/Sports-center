@@ -47,10 +47,10 @@ const Favourites: React.FC = () => {
     (team: any) => favoriteTeams[team.name] === true
   );
   return (
-    <div className="container">
+    <div className="container  dark:bg-gray-500 ">
       <div className="dropdown-container  p-4">
         <select
-          className="dropdown p-2 border border-black rounded-lg"
+          className="dropdown p-2 border bg-gray-400 dark:bg-gray-500  border-black rounded-lg"
           value={selectedSport}
           onChange={handleSportChange}
         >
@@ -62,7 +62,7 @@ const Favourites: React.FC = () => {
                 </option>
               ))
             : sportsState?.sports.map((sport: any) => (
-                <option key={sport.id} value={sport.name}>
+                <option key={sport.id} value={sport.name} className="dark:bg-gray-800">
                   {sport.name}
                 </option>
               ))}
@@ -72,7 +72,7 @@ const Favourites: React.FC = () => {
       {selectedSport && (
         <div className="dropdown-container p-4">
           <select
-            className="dropdown p-3 border border-black rounded-lg "
+            className="dropdown p-3 border border-black rounded-lg bg-gray-400   dark:bg-gray-800 "
             value={selectedTeam}
             onChange={handleTeamChange}
           >
@@ -81,14 +81,14 @@ const Favourites: React.FC = () => {
               ? favoriteTeamsList
                   ?.filter((team: any) => team.plays === selectedSport)
                   .map((team: any) => (
-                    <option key={team.id} value={team.name}>
+                    <option key={team.id} value={team.name} className="dark:bg-gray-800">
                       {team.name}
                     </option>
                   ))
               : teamsState?.teams
                   .filter((team: any) => team.plays === selectedSport)
                   .map((team: any) => (
-                    <option key={team.id} value={team.name}>
+                    <option key={team.id} value={team.name} className="dark:bg-gray-800">
                       {team.name}
                     </option>
                   ))}

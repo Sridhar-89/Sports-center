@@ -6,6 +6,7 @@ import Home from "../pages/Homepage";
 import ProtectedRoute from "./ProtectedRoute";
 import Dashboard from "../pages/dashboard";
 import UPassword from "../pages/password";
+import NotFound from "../pages/Notfound";
 
 const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/home" replace /> },
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
         <UPassword />
       </ProtectedRoute>
     ),
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 export default router;

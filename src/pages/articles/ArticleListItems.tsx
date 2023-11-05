@@ -53,8 +53,8 @@ export default function ArticleListItems({ article }: { article: Article }) {
 
   return (
     <div>
-      <div className="m-4">
-        <div key={article.id} className="my-5 p-5 bg-gray-500 rounded-lg flex">
+      <div className="m-4 dark:bg-gray-500">
+        <div key={article.id} className="my-5 p-5 rounded-lg flex dark:bg-gray-800">
           <div className="flex-1">
             <div>
               <h3 className="text-sm  mb-3">{article.sport.name}</h3>
@@ -71,7 +71,7 @@ export default function ArticleListItems({ article }: { article: Article }) {
               </h3>
               <button
                 onClick={() => handleLinkClick(article.id)}
-                className=" text-blue-900 underline hover:text-red-500"
+                className=" text-blue-900 underline hover:text-red-500 dark:text-white"
               >
                 Read More...
               </button>
@@ -93,7 +93,7 @@ export default function ArticleListItems({ article }: { article: Article }) {
         className="relative z-50"
       >
         <div className="fixed inset-0 flex items-center justify-center p-4">
-          <Dialog.Panel className="w-full max-h-screen overflow-y-auto p-4 max-w-2xl rounded bg-gray-200">
+          <Dialog.Panel className="w-full max-h-screen overflow-y-auto p-4 max-w-2xl rounded bg-gray-200 dark:bg-gray-500">
             <div className="flex justify-end">
               <button onClick={() => setIsDialogOpen(false)}>
                 <svg
@@ -118,7 +118,7 @@ export default function ArticleListItems({ article }: { article: Article }) {
               <div>
                 <Dialog.Title
                   key={selectedArticleId}
-                  className="bg-green-200 font-bold text-xl shadow-xl py-2 rounded-xl px-2"
+                  className="bg-green-200 font-bold text-xl shadow-xl py-2 rounded-xl px-2 dark:bg-gray-500"
                 >
                   {articleData.title}
                 </Dialog.Title>

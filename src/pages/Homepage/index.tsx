@@ -4,11 +4,11 @@ import Appbar from "../../layouts/Appbar";
 import Favourites from "../favourites";
 import Articles from "../articles";
 
-const Home = () =>{
+const Home = () => {
   return (
-    <div className="m-4">
-      <Appbar/>
-      <div className="bg-gray-100">
+    <div className="m-4 dark:bg-grey-300">
+      <Appbar />
+      {/* <div className="bg-gray-100">
         <div>
           <Livescore />
         </div>
@@ -21,9 +21,9 @@ const Home = () =>{
             <Favourites />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
-}
+};
 
 export default Home;

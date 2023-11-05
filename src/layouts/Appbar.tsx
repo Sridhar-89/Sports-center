@@ -1,5 +1,7 @@
 import { Disclosure, Menu } from "@headlessui/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
+import bulbon from "../assets/bulbon.svg";
+import bulboff from "../assets/bulboff.svg";
 
 import { useNavigate } from "react-router-dom";
 
@@ -15,9 +17,31 @@ import { Link } from "react-router-dom";
 import Livescore from "../pages/livescores";
 import Favourites from "../pages/favourites";
 import Articles from "../pages/articles";
+import { ThemeContext } from "../context/theme";
 
 const Appbar = () => {
   const navigate = useNavigate();
+  const { theme, setTheme } = useContext(ThemeContext);
+  const [enabled, setEnabled] = useState(theme === "dark");
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    let newTheme = "";
+    if (theme === "light") {
+      newTheme = "dark";
+    } else {
+      newTheme = "light";
+    }
+    setEnabled(!enabled);
+    setTheme(newTheme);
+  };
 
   const authToken = localStorage.getItem("authToken");
 
@@ -163,6 +187,27 @@ const Appbar = () => {
                   </span>
                 </div>
                 <div>
+                <div className="flex items-center  space-x-4">
+                    <Menu as="div" className="relative">
+                      <Menu.Button
+                        onClick={toggleTheme}
+                        className="h-8 w-8 rounded-full ml-10 hover:bg-blue-600  flex items-center justify-center focus:outline-none"
+                      >
+                        {theme === "light" ? (
+                          <img
+                            className="h-12 w-18 mr-2"
+                            src={bulboff}
+                            alt="Logo"
+                          />
+                        ) : (
+                          <img
+                            className="h-8 w-12 mr-2 bg-white rounded-lg"
+                            src={bulbon}
+                            alt="Logo"
+                          />
+                        )}
+                      </Menu.Button>
+                    </Menu>
                   <Menu as="div" className="relative inline-block text-left">
                     {authToken ? (
                       <Menu.Button
@@ -190,7 +235,7 @@ const Appbar = () => {
                       className="relative z-50"
                     >
                       <div className="fixed inset-0 flex items-center justify-center p-4">
-                        <Dialog.Panel className="w-full max-h-screen overflow-y-auto p-4 max-w-xl rounded bg-white">
+                        <Dialog.Panel className="w-full max-h-screen overflow-y-auto p-4 max-w-xl rounded bg-gray-300 dark:bg-gray-500">
                           <div className="flex justify-end">
                             <button onClick={() => setIsDialogOpen(false)}>
                               <svg
@@ -211,7 +256,7 @@ const Appbar = () => {
                           </div>
 
                           <div>
-                            <Dialog.Title className="bg-white  font-bold text-2xl py-2">
+                            <Dialog.Title className="font-bold text-2xl py-2">
                               Preferences
                             </Dialog.Title>
                           </div>
@@ -267,7 +312,7 @@ const Appbar = () => {
                             </button>
                             <button
                               onClick={() => handleSave()}
-                              className="bg-green-800 px-2 py-1.5 mx-2 text-white  hover:bg-blue-700 text-lg rounded-xl"
+                              className="bg-green-800 px-2 py-1.5 mx-2 text-white hover:bg-blue-700 text-lg rounded-xl"
                             >
                               save
                             </button>
@@ -354,10 +399,11 @@ const Appbar = () => {
                 </div>
               </div>
             </div>
+            </div>
           </>
         )}
       </Disclosure>
-      <div className="bg-white">
+      <div className="dark:bg-gray-500">
         <div>
           <Livescore />
         </div>

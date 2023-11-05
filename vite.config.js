@@ -11,8 +11,8 @@ export default defineConfig({
         enabled: true 
       },
       manifest: {
-        name: "Sports News application",
-        short_name: "Sports News",
+        name: "Sports Hub application",
+        short_name: "Sports-center",
         icons: [
           {
             "src": "/favicon.ico",
@@ -38,7 +38,7 @@ export default defineConfig({
             "src": "/android-chrome-512x512.png",
             "type": "image/png",
             "sizes": "512x512",
-            "purpose": "any maskable" // Icon format that ensures that your PWA icon looks great on all Android devices
+            "purpose": "any maskable" 
           }
         ],
         theme_color: '#AAF',

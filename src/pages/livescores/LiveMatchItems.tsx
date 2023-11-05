@@ -54,10 +54,10 @@ export default function LiveMatchItems(props: Props, State: State) {
 
   return (
     Livematch.isRunning && (
-      <div className="flex px-4 py-2  shadow-lg">
-        <div className="flex space-x-10">
+      <div className="flex px-4 py-2 shadow-lg dark:bg-gray-500">
+        <div className="flex space-x-10 dark:bg-gray-500 ">
           <div
-            className="bg-gray-100 rounded-lg shadow p-4 border border-black"
+            className="rounded-lg shadow p-4 border border-black dark:bg-gray-800"
             key={Livematch.sportName}
           >
             <div className="flex justify-between space-x-3">

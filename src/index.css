@@ -4,3 +4,21 @@
 .dark {
     @apply bg-slate-800 text-zinc-50;
   }
+  .custom-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ff0000;
+    color: #ffffff; 
+    
+  }
+  
+ 
+  .custom-button {
+    background-color: #007bff; 
+    color: #fff; 
+    border: 2px solid #000; 
+    
+  }

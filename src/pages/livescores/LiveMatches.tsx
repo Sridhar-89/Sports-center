@@ -42,12 +42,12 @@ export default function LiveMatches() {
   });
 
   if (authToken && live.length == 0) {
-    return <h1>No Live Matches Available</h1>;
+    return <h1 className="dark:text-black">No Live Matches Available</h1>;
   }
 
   return (
     <>
-      <div className="flex px-6">
+      <div className="flex px-6 dark:bg-gray-300">
         {authToken
           ? live?.map((match: any) => (
               <LiveMatchItems key={match.id} id={match.id} />
