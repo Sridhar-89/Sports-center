@@ -403,7 +403,7 @@ const Appbar = () => {
           </>
         )}
       </Disclosure>
-      <div className="dark:bg-gray-500">
+      <div className="dark:bg-gray-800">
         <div>
           <Livescore />
         </div>
