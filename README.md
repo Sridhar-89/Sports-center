@@ -56,5 +56,14 @@ Deployed link :- https://dazzling-longma-d7898f.netlify.app/
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Screenshot 2023-11-07 234742](https://github.com/Sridhar-89/Sports-center/assets/109356015/34929f42-2770-4d96-9543-dad15afa7532)
+![Screenshot 2023-11-07 234757](https://github.com/Sridhar-89/Sports-center/assets/109356015/94b5f768-36b4-4f95-902b-b1df49488b7d)
+![Screenshot 2023-11-07 234813](https://github.com/Sridhar-89/Sports-center/assets/109356015/732c216a-b1b0-46fb-ac1e-2528b47df3e7)
+![Screenshot 2023-11-07 234825](https://github.com/Sridhar-89/Sports-center/assets/109356015/d10c2866-8100-4c81-82fc-2e868aba92d7)
+![Screenshot 2023-11-07 234904](https://github.com/Sridhar-89/Sports-center/assets/109356015/de3b90cd-ba66-4e51-87d3-7970c79ad022)
+![Screenshot 2023-11-07 234923](https://github.com/Sridhar-89/Sports-center/assets/109356015/fe79ccc8-52a4-44ce-b29b-717e21bc4fda)
+![Screenshot 2023-11-07 234948](https://github.com/Sridhar-89/Sports-center/assets/109356015/1c5c0361-7787-44c8-b3ec-b7f127a4a3a9)
+
+
+
 
