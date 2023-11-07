@@ -93,8 +93,8 @@ export default function ArticleListItems({ article }: { article: Article }) {
         className="relative z-50"
       >
         <div className="fixed inset-0 flex items-center justify-center p-4">
-          <Dialog.Panel className="w-full max-h-screen overflow-y-auto p-4 max-w-2xl rounded bg-gray-200 dark:bg-gray-500">
-            <div className="flex justify-end">
+          <Dialog.Panel className="w-full max-h-screen overflow-y-auto p-4 max-w-2xl rounded bg-black dark:bg-gray-500">
+            <div className="flex justify-end ">
               <button onClick={() => setIsDialogOpen(false)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@ export default function ArticleListItems({ article }: { article: Article }) {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="w-5 h-5"
+                  className="w-5 h-5 hover:bg-red-500"
                 >
                   <circle cx="12" cy="12" r="10" />
                   <line x1="15" y1="9" x2="9" y2="15" />
@@ -115,10 +115,10 @@ export default function ArticleListItems({ article }: { article: Article }) {
               </button>
             </div>
             {articleData && (
-              <div>
+              <div className="py-2">
                 <Dialog.Title
                   key={selectedArticleId}
-                  className="bg-green-200 font-bold text-xl shadow-xl py-2 rounded-xl px-2 dark:bg-gray-500"
+                  className="bg-green-200 font-bold text-xl shadow-xl py-3 rounded-xl px-2 dark:bg-gray-500"
                 >
                   {articleData.title}
                 </Dialog.Title>
@@ -126,7 +126,7 @@ export default function ArticleListItems({ article }: { article: Article }) {
                   <img
                     src={articleData.thumbnail}
                     alt={articleData.title}
-                    className="w-full h-40 object-cover rounded"
+                    className="w-full h-80 object-cover rounded"
                   />
                 </div>
                 <div>{articleData.content}</div>
