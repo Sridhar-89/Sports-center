@@ -54,7 +54,10 @@ export default function ArticleListItems({ article }: { article: Article }) {
   return (
     <div>
       <div className="m-4 dark:bg-gray-500">
-        <div key={article.id} className="my-5 p-5 rounded-lg flex dark:bg-gray-800">
+        <div
+          key={article.id}
+          className="my-5 p-5 rounded-lg flex dark:bg-gray-800"
+        >
           <div className="flex-1">
             <div>
               <h3 className="text-sm  mb-3">{article.sport.name}</h3>
@@ -129,7 +132,7 @@ export default function ArticleListItems({ article }: { article: Article }) {
                     className="w-full h-80 object-cover rounded"
                   />
                 </div>
-                <div>{articleData.content}</div>
+                <div className="text-white">{articleData.content}</div>
               </div>
             )}
           </Dialog.Panel>
